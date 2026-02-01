@@ -2,8 +2,6 @@
 
 FlipTastic is a command-line tool that sorts video files in a folder based on their orientation (landscape, portrait, square).
 
----
-
 ## Table of Contents
 - [Features](#features)
 - [Prerequisites](#prerequisites)
@@ -13,14 +11,10 @@ FlipTastic is a command-line tool that sorts video files in a folder based on th
 - [Contributing](#contributing)
 - [License](#license)
 
----
-
 ## Features
 - Sorts videos into `landscape` and `portrait` subfolders based on their orientation.
 - Supports the following video formats: `.mp4`, `.mov`, `.avi`, `.mkv`, `.flv`, `.wmv`, `.webm`.
 - Works recursively on subfolders if needed.
-
----
 
 ## Prerequisites
 - Python 3.6 or higher
