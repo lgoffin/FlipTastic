@@ -5,8 +5,15 @@ from video_utils import VideoSorter
 
 
 def get_subfolder(folder: Path, excluded_folders: list[str], include_subfolders: bool = False) -> list[Path]:
+    """
+    Returns a list of subfolders within a folder.
+    :param folder: root folder path
+    :param excluded_folders: list of subfolders to exclude
+    :param include_subfolders: whether to include subfolders
+    :return:
+    """
     if include_subfolders:
-        return [folder] + [Path(r) for r, d, files in os.walk(folder) if r not in excluded_folders]
+        return [folder] + [Path(r) for r, d, files in os.walk(folder) if not any(excl in Path(r).parts for excl in excluded_folders)]
     else:
         return [folder] + [Path(f) for f in os.scandir(folder) if f.is_dir() and f.name not in excluded_folders]
 
@@ -22,7 +29,7 @@ if __name__ == "__main__":
     sorter = VideoSorter()
     if args.recursive:
         # list all folders to process
-        subfolders = get_subfolder(args.folder, excluded_folders=["..", "portrait", "landscape"], include_subfolders=True)
+        subfolders = get_subfolder(Path(args.folder), excluded_folders=["..", "portrait", "landscape"], include_subfolders=True)
         print(f"Found {len(subfolders)} subfolders to process in {args.folder}.")
         # loop over subfolders
         for subfolder in subfolders:
