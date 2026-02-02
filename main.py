@@ -39,5 +39,5 @@ if __name__ == "__main__":
     else:
         # process only current folder
         print(f"Processing folder: {args.folder} ...")
-        sorter.sort_videos_by_orientation(args.folder)
+        sorter.sort_videos_by_orientation(Path(args.folder))
         print(f"Done sorting videos in {args.folder} !")
